@@ -1,0 +1,2 @@
+where keytool // enter command
+keytool -list -v -keystore "D:\Projects\keystore\trail\trail.jks" -alias trail -storepass android -keypass android

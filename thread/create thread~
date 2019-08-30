@@ -1,0 +1,10 @@
+new Thread(new Runnable() {
+            public void run() {
+                try {
+                    retrieveAndAddCities();
+                } catch (IOException e) {
+                    Log.e(LOG_TAG, "Cannot retrive cities", e);
+                    return;
+                }
+            }
+        }).start();

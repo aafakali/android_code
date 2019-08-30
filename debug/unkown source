@@ -1,0 +1,4 @@
+Add the following lines to your proguard configuration.
+
+-renamesourcefileattribute SourceFile    
+-keepattributes SourceFile,LineNumberTable

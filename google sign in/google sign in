@@ -1,0 +1,45 @@
+ private void intiGooglePlus() {
+        gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+        //Initializing google api client
+        mGoogleApiClient = new GoogleApiClient.Builder(this)
+                .enableAutoManage(this,this)
+                .addApi(Auth.GOOGLE_SIGN_IN_API, gso)
+                .addApi(Plus.API)
+                .build();
+    }
+
+    private int RC_SIGN_IN = 120;
+    private void googleSignIn() {
+        //Creating an intent
+        Intent signInIntent = Auth.GoogleSignInApi.getSignInIntent(mGoogleApiClient);
+        //Starting intent for result
+        startActivityForResult(signInIntent, RC_SIGN_IN);
+    }
+
+
+
+// in on Activity result
+
+ if (requestCode == RC_SIGN_IN) {
+            GoogleSignInResult result = Auth.GoogleSignInApi.getSignInResultFromIntent(data);
+            //Calling a new function to handle signin
+            if (result.isSuccess()) {
+                GoogleSignInAccount acct = result.getSignInAccount();
+                //Displaying name and email
+                Log.e("googleSignValues",acct.getEmail()+"--"+acct.getGivenName()+"=="+acct.getFamilyName());
+                loadFromSocialNetwork(Const.GOOGLE_LOGIN, acct.getEmail(),
+                        acct.getGivenName(), acct.getFamilyName());
+
+                Auth.GoogleSignInApi.signOut(mGoogleApiClient);
+            } else {
+                //If login fails
+                Log.e("resultFalse",result.toString());
+              dialog= DialogUtils.showOkDialogBrodcast(mdialogContext, "Failed to login", new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        dialog.dismiss();
+                    }
+                });
+            }

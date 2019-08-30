@@ -1,0 +1,22 @@
+1// make a seprate class
+public class CaberaHandler {
+    public static Handler UIHandler, ToastHandler, CarUIHandler;
+    public static Handler pushHandler = new Handler();
+}
+
+
+2// send data to class 
+
+ Message msg = new Message();
+                    msg.obj = message.toString();
+                    CaberaHandler.CarUIHandler.sendMessage(msg);
+
+
+3// where to get data in a format of msg
+ CaberaHandler.UIHandler = new Handler(new Handler.Callback() {
+            @Override
+            public boolean handleMessage(Message msg) {
+                pickPointInput.setText((String) msg.obj);
+                return true;
+            }
+        });

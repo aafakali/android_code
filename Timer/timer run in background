@@ -1,0 +1,23 @@
+ new Handler(Looper.getMainLooper()).post(new Runnable() {
+            @Override
+            public void run() {
+                countDownTimer = new CountDownTimer(30000, 1000) {
+
+                    public void onTick(long millisUntilFinished) {
+                        seconds = millisUntilFinished;
+                        Log.e("seconds remaining: ", "==" + millisUntilFinished / 1000);
+                        //here you can have your logic to set text to edittext
+                    }
+
+                    public void onFinish() {
+                        Log.e("done", "done");
+                        MapUtils.cancelSound();
+                        resetTimer();
+
+
+
+                    }
+
+                }.start();
+            }
+        });

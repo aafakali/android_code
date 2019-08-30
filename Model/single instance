@@ -1,0 +1,7 @@
+ public static LocationDao getInstance() {
+
+        if (instance == null) {
+            instance = new LocationDao();
+        }
+        return instance;
+    }

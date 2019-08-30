@@ -1,0 +1,21 @@
+public void storeArrayListUuid(String uuid) {
+        SharedPreferences.Editor prefsEditor = sharedPreferences.edit();
+        Set<String> set = sharedPreferences.getStringSet("driverUUIDs", new HashSet<String>());
+//        prefsEditor.clear();
+        set.add(uuid);
+        prefsEditor.putStringSet("driverUUIDs", set);
+        prefsEditor.commit();
+    }
+
+    public boolean isUuidisAvailable(String uuid) {
+        Set<String> list = sharedPreferences.getStringSet("driverUUIDs", new HashSet<String>());
+           if (list != null&&list.contains(uuid)) {
+               return true;
+        } else
+            return false;
+    }
+
+   public void removeArrayListUUid(){
+       sharedPreferences.edit().remove("driverUUIDs").commit();
+   }
+

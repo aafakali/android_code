@@ -1,0 +1,17 @@
+ private void orignalSize(){
+        DisplayMetrics metrics = new DisplayMetrics();  getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        android.widget.RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams)imageView.getLayoutParams();
+        params.width =  (int) (300*metrics.density);
+        params.height = (int) (250*metrics.density);
+        params.leftMargin = 30;
+        imageView.setLayoutParams(params);
+    }
+
+    private void fullScreen(){
+        DisplayMetrics metrics = new DisplayMetrics(); getWindowManager().getDefaultDisplay().getMetrics(metrics);
+        android.widget.RelativeLayout.LayoutParams params = (android.widget.RelativeLayout.LayoutParams) imageView.getLayoutParams();
+        params.width =  metrics.widthPixels;
+        params.height = metrics.heightPixels;
+        params.leftMargin = 0;
+        imageView.setLayoutParams(params);
+    }

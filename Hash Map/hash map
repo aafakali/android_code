@@ -1,0 +1,5 @@
+private HashMap<String, DriverVehiclesTypes> driverVehiclesHashMap = new HashMap<>();
+
+driverVehiclesHashMap.put(jsonObject.optString("vehicle_type_id"), new DriverVehiclesTypes(jsonObject));
+
+
